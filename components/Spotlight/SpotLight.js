@@ -8,7 +8,6 @@ function randomSpotLight(pieces) {
 
 export default function SpotLight({ pieces }) {
   const randomPiece = randomSpotLight(pieces);
-  console.log(randomSpotLight);
   if (!randomPiece) return null;
 
   return (
