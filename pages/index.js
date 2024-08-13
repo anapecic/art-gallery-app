@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import ArtPieces from "@/components/ArtPieces/ArtPieces";
-
+import { randomSpotLight, SpotLight } from "@/components/Spotlight/SpotLight";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function HomePage() {
@@ -12,6 +12,7 @@ export default function HomePage() {
 
   return (
     <div>
+      <SpotLight pieces={pieces} />
       <ArtPieces pieces={pieces} />
     </div>
   );
