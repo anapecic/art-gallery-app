@@ -2,14 +2,24 @@ import Image from "next/image";
 import { uid } from "uid";
 import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
 
-export function randomSpotLight() {
-  if (!pieces || pieces.lenght === 0) return null;
-  const randomIndex = math.floor(math.random() * pieces.lenght);
-  return pieces[randomIndex];
+function randomSpotLight({ piece }) {
+  if (!piece || piece.lenght === 0) return null;
+  const randomIndex = Math.floor(Math.random() * piece.length);
+  return piece[randomIndex];
 }
-{
-  /* <div>
-  <h1>Spotlight</h1>
-  <ArtPiecePreview />
-</div>; */
+
+export function SpotLight({ pieces }) {
+  const randomPiece = randomSpotLight();
+  if (!randomPiece) return null;
+
+  return (
+    <div>
+      <h1>Spotlight</h1>
+      <SpotLight
+        title={randomPiece.title}
+        artist={randomPiece.artist}
+        imageSrc={randomPiece.imageSrc}
+      />
+    </div>
+  );
 }
