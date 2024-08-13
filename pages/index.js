@@ -16,3 +16,6 @@ export default function HomePage() {
     </div>
   );
 }
+
+//erstellen dynamische Seite für jedes Art Piece ->neue KOmponente ArtPieceDetails (title, artist, year, genre..)
+//Wir passen die Hauptseite so an, dass die pieces klickbar sind
