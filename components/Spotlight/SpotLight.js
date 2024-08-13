@@ -1,7 +1,4 @@
 import Image from "next/image";
-import { uid } from "uid";
-import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
-import ArtPieces from "../ArtPieces/ArtPieces";
 
 function randomSpotLight(pieces) {
   if (!pieces) return null;
@@ -9,7 +6,7 @@ function randomSpotLight(pieces) {
   return pieces[randomIndex];
 }
 
-export function SpotLight({ pieces }) {
+export default function SpotLight({ pieces }) {
   const randomPiece = randomSpotLight(pieces);
   console.log(randomSpotLight);
   if (!randomPiece) return null;
