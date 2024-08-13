@@ -1,21 +1,10 @@
-import useSWR from "swr";
-import ArtPieces from "@/components/ArtPieces/ArtPieces";
+import ArtPieces from "./ArtPieces";
+import ArtPieceDetails from "./ArtPieces/[slug]";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-export default function HomePage() {
-  const url = "https://example-apis.vercel.app/api/art";
-  const { data: pieces, error, isLoading } = useSWR(url, fetcher);
-
-  if (error) return <div>Failed to Load.</div>;
-  if (isLoading) return <div>loading...</div>;
-
+export default function HomePage({ pieces }) {
   return (
     <div>
       <ArtPieces pieces={pieces} />
     </div>
   );
 }
-
-//erstellen dynamische Seite für jedes Art Piece ->neue KOmponente ArtPieceDetails (title, artist, year, genre..)
-//Wir passen die Hauptseite so an, dass die pieces klickbar sind

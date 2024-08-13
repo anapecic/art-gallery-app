@@ -1,4 +1,4 @@
-import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
+import ArtPiecePreview from "../../components/ArtPiecePreview/ArtPiecePreview";
 import { uid } from "uid";
 
 export default function ArtPieces({ pieces }) {
