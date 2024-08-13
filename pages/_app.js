@@ -14,18 +14,14 @@ export default function App({ Component, pageProps }) {
   if (isLoading) return <div>loading...</div>;
 
   function handleToggleFavorite(clickedSlug) {
-    //Versuch: falls das bild schon mal favorisiert wurde, toggle isFavorite. Falls nicht, setze setArtPiecesInfo so auf, das das aktuelle bild mit id und isFavorite aufgenommen wird
-
     const newPiece = artPiecesInfo.find(
       (artPiece) => artPiece.id === clickedSlug
     );
     console.log(newPiece);
     if (!newPiece) {
-      console.log("i have never been clicked");
       const newObject = { id: clickedSlug, isFavorite: true };
       setArtPiecesInfo([...artPiecesInfo, newObject]);
     } else {
-      console.log("i have been clicked before");
       setArtPiecesInfo(
         artPiecesInfo.map((artPiece) =>
           artPiece.id === clickedSlug
