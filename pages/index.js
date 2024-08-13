@@ -1,11 +1,9 @@
-import ArtPieces from "./ArtPieces";
-import SpotLight from "@/components/Spotlight/SpotLight";
+import Spotlight from "@/components/Spotlight/SpotLight";
 
-export default function HomePage({ pieces }) {
+export default function SpotlightPage({ pieces }) {
   return (
     <div>
-      <SpotLight pieces={pieces} />
-      <ArtPieces pieces={pieces} />
+      <Spotlight pieces={pieces} />
     </div>
   );
 }
