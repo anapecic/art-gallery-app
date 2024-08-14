@@ -2,15 +2,14 @@ import { useState, useEffect } from "react";
 import { uid } from "uid";
 
 export default function CommentSection({ handleAddComment, artPiecesInfo }) {
-  function onAddComment(event, newComment) {
-    event.preventDefault();
-    handleAddComment(newComment);
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
+    const date = new Date();
+    const currentDate = date.toLocaleString();
     const newComment = event.target.elements.input.value;
-    handleAddComment(newComment);
+    handleAddComment(newComment, currentDate);
+    event.target.reset();
+    event.target.elements.input.focus();
   }
 
   return (

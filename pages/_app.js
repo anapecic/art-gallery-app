@@ -32,7 +32,8 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  const handleAddComment = (newComment, id) => {
+  const handleAddComment = (newComment, currentDate, id) => {
+    //currentDate muss noch implementiert werden
     console.log(newComment);
     const artPiece = artPiecesInfo.find((piece) => piece.id === id);
     const updatedWithNewComment = artPiecesInfo.map((piece) =>
