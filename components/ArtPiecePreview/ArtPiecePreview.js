@@ -5,7 +5,7 @@ export default function ArtPiecePreview({ piece }) {
   return (
     <ul>
       <li>
-        <Link href={`/ArtPieces/${piece.slug}`}>
+        <Link href={`/art-pieces/${piece.slug}`}>
           <Image
             src={piece.imageSource}
             alt={piece.name}
