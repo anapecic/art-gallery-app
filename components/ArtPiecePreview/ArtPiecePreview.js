@@ -1,10 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ArtPiecePreview({ piece }) {
+export default function ArtPiecePreview({ piece, handleToggleFavorite }) {
   return (
     <ul>
       <li>
+        <FavoriteButton
+          piece={piece}
+          handleToggleFavorite={handleToggleFavorite}
+        />
         <Link href={`/art-pieces/${piece.slug}`}>
           <Image
             src={piece.imageSource}
@@ -18,5 +22,22 @@ export default function ArtPiecePreview({ piece }) {
         </h2>
       </li>
     </ul>
+  );
+}
+
+function FavoriteButton({ piece, handleToggleFavorite }) {
+  function onToggleFavorite(event, slug) {
+    event.preventDefault();
+    handleToggleFavorite(slug);
+  }
+
+  return (
+    <Image
+      src="/heart.svg"
+      alt="favorite button"
+      width={30}
+      height={30}
+      onClick={(event) => onToggleFavorite(event, piece.slug)}
+    />
   );
 }
