@@ -1,11 +1,14 @@
-import ArtPieces from "./ArtPieces";
-import SpotLight from "@/components/Spotlight/SpotLight";
+import Spotlight from "@/components/Spotlight/SpotLight";
+import ArtPiecesPage from "./art-pieces";
 
 export default function HomePage({ pieces, handleToggleFavorite }) {
   return (
     <div>
-      <SpotLight pieces={pieces} />
-      <ArtPieces pieces={pieces} handleToggleFavorite={handleToggleFavorite} />
+      <Spotlight pieces={pieces} />
+      <ArtPiecesPage
+        pieces={pieces}
+        handleToggleFavorite={handleToggleFavorite}
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import Layout from "@/components/Layout/Layout";
 import GlobalStyle from "../styles";
 import useSWR from "swr";
+import { useState } from "react";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -8,7 +9,6 @@ export default function App({ Component, pageProps }) {
   const url = "https://example-apis.vercel.app/api/art";
   const { data: pieces, error, isLoading } = useSWR(url, fetcher);
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
-  console.log(artPiecesInfo);
 
   if (error) return <div>Failed to Load.</div>;
   if (isLoading) return <div>loading...</div>;
@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
     const newPiece = artPiecesInfo.find(
       (artPiece) => artPiece.id === clickedSlug
     );
-    console.log(newPiece);
+
     if (!newPiece) {
       const newObject = { id: clickedSlug, isFavorite: true };
       setArtPiecesInfo([...artPiecesInfo, newObject]);
@@ -35,12 +35,14 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component
-        {...pageProps}
-        pieces={pieces}
-        artPiecesInfo={artPiecesInfo}
-        handleToggleFavorite={handleToggleFavorite}
-      />
+      <Layout>
+        <Component
+          {...pageProps}
+          pieces={pieces}
+          artPiecesInfo={artPiecesInfo}
+          handleToggleFavorite={handleToggleFavorite}
+        />
+      </Layout>
     </>
   );
 }

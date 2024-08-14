@@ -9,7 +9,7 @@ export default function ArtPiecePreview({ piece, handleToggleFavorite }) {
           piece={piece}
           handleToggleFavorite={handleToggleFavorite}
         />
-        <Link href={`/ArtPieces/${piece.slug}`}>
+        <Link href={`/art-pieces/${piece.slug}`}>
           <Image
             src={piece.imageSource}
             alt={piece.name}
@@ -26,8 +26,8 @@ export default function ArtPiecePreview({ piece, handleToggleFavorite }) {
 }
 
 function FavoriteButton({ piece, handleToggleFavorite }) {
-  function onToggleFavorite(slug) {
-    console.log("on toggle is function", slug);
+  function onToggleFavorite(event, slug) {
+    event.preventDefault();
     handleToggleFavorite(slug);
   }
 
@@ -37,7 +37,7 @@ function FavoriteButton({ piece, handleToggleFavorite }) {
       alt="favorite button"
       width={30}
       height={30}
-      onClick={() => onToggleFavorite(piece.slug)}
+      onClick={(event) => onToggleFavorite(event, piece.slug)}
     />
   );
 }
