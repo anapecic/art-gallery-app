@@ -32,6 +32,24 @@ export default function App({ Component, pageProps }) {
     }
   }
 
+  const handleAddComment = (newComment, id) => {
+    console.log(newComment);
+    const artPiece = artPiecesInfo.find((piece) => piece.id === id);
+    const updatedWithNewComment = artPiecesInfo.map((piece) =>
+      piece.id === id
+        ? { ...artPiece, comments: [...artPiece.comments, newComment] }
+        : piece
+    );
+    if (!artPiece) {
+      setArtPiecesInfo([
+        ...artPiecesInfo,
+        { id: id, isFavorite: false, comments: [newComment] },
+      ]);
+    } else {
+      setArtPiecesInfo([...updatedWithNewComment]);
+    }
+  };
+  console.log(artPiecesInfo);
   return (
     <>
       <GlobalStyle />
@@ -41,6 +59,7 @@ export default function App({ Component, pageProps }) {
           pieces={pieces}
           artPiecesInfo={artPiecesInfo}
           handleToggleFavorite={handleToggleFavorite}
+          handleAddComment={handleAddComment}
         />
       </Layout>
     </>
