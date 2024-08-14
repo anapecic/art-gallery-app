@@ -11,7 +11,7 @@ const StyledNavBar = styled.nav`
 export default function Navigation() {
   return (
     <StyledNavBar>
-      <Link href="/">Spotlight</Link>
+      <Link href="/spotlight">Spotlight</Link>
       <Link href="/art-pieces">Pieces</Link>
     </StyledNavBar>
   );

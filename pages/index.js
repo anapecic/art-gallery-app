@@ -1,5 +1,5 @@
-import Spotlight from "@/components/Spotlight/SpotLight";
 import ArtPiecesPage from "./art-pieces";
+import Spotlight from "./spotlight";
 
 export default function HomePage({ pieces, handleToggleFavorite }) {
   return (
