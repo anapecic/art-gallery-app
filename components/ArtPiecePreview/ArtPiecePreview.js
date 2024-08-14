@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "../FavoriteButoon/FavoriteButton";
 
 export default function ArtPiecePreview({ piece, handleToggleFavorite }) {
   return (
@@ -22,22 +23,5 @@ export default function ArtPiecePreview({ piece, handleToggleFavorite }) {
         </h2>
       </li>
     </ul>
-  );
-}
-
-function FavoriteButton({ piece, handleToggleFavorite }) {
-  function onToggleFavorite(event, slug) {
-    event.preventDefault();
-    handleToggleFavorite(slug);
-  }
-
-  return (
-    <Image
-      src="/heart.svg"
-      alt="favorite button"
-      width={30}
-      height={30}
-      onClick={(event) => onToggleFavorite(event, piece.slug)}
-    />
   );
 }
