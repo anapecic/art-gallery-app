@@ -19,12 +19,9 @@ export default function App({ Component, pageProps }) {
     );
 
     if (!newPiece) {
-      console.log(artPiecesInfo);
       const newObject = { id: clickedSlug, isFavorite: true };
       setArtPiecesInfo([...artPiecesInfo, newObject]);
     } else {
-      console.log(artPiecesInfo);
-
       setArtPiecesInfo(
         artPiecesInfo.map((artPiece) =>
           artPiece.id === clickedSlug
