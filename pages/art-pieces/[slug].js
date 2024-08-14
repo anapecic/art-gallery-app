@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
+import CommentSection from "@/components/CommentSection/CommentSection.js"; // Importiere die CommentSection-Komponente
 
 export default function ArtPieceDetails({ pieces }) {
   const router = useRouter();
@@ -23,6 +24,7 @@ export default function ArtPieceDetails({ pieces }) {
         width={currentPiece.dimensions.width * 0.3}
         height={currentPiece.dimensions.height * 0.3}
       />
+      <CommentSection />
     </div>
   );
 }
