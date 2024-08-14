@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import CommentSection from "@/components/CommentSection/CommentSection.js";
 import { uid } from "uid";
+import Comments from "@/components/Comments/Comments";
 
 export default function ArtPieceDetails({
   pieces,
@@ -38,36 +39,5 @@ export default function ArtPieceDetails({
         }}
       />
     </div>
-  );
-}
-
-function Comments({ artPiecesInfo, currentPiece }) {
-  console.log(artPiecesInfo);
-  const currentArt = artPiecesInfo.find(
-    (piece) => currentPiece.slug === piece.id
-  );
-  console.log(currentArt?.comments);
-  const comments = currentArt?.comments;
-
-  return (
-    <>
-      <h3>Comments</h3>
-      {comments?.map((comment) => (
-        <>
-          <Comment key={uid()} comment={comment} />
-        </>
-      ))}
-    </>
-  );
-}
-
-function Comment({ comment }) {
-  return (
-    <>
-      <p style={{ fontWeight: "bold", fontSize: "10px" }}>
-        placeholder for time and date
-      </p>
-      <p>{comment}</p>
-    </>
   );
 }
