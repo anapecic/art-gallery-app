@@ -1,4 +1,4 @@
-import Spotlight from "@/components/Spotlight/SpotLight";
+import Spotlight from "@/components/Spotlight/Spotlight";
 
 export default function SpotlightPage({ pieces }) {
   return (
