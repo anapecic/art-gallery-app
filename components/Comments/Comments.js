@@ -9,7 +9,7 @@ export default function Comments({ artPiecesInfo, currentPiece }) {
 
   return (
     <>
-      <h3>Comments</h3>
+      <h3 key={uid()}>Comments</h3>
       {comments?.map((comment) => (
         <>
           <Comment key={uid()} comment={comment} />

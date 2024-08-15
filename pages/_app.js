@@ -2,15 +2,17 @@ import Layout from "@/components/Layout/Layout";
 import GlobalStyle from "../styles";
 import useSWR from "swr";
 import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
   const url = "https://example-apis.vercel.app/api/art";
   const { data: pieces, error, isLoading } = useSWR(url, fetcher);
-  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
-
-  console.log(artPiecesInfo);
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
+    "artPiecesInfo",
+    { defaultValue: [] }
+  );
 
   if (error) return <div>Failed to Load.</div>;
   if (isLoading) return <div>loading...</div>;
@@ -36,11 +38,15 @@ export default function App({ Component, pageProps }) {
 
   const handleAddComment = (newComment, currentDate, id) => {
     //currentDate muss noch implementiert werden
-    console.log(newComment);
     const artPiece = artPiecesInfo.find((piece) => piece.id === id);
     const updatedWithNewComment = artPiecesInfo.map((piece) =>
       piece.id === id
-        ? { ...artPiece, comments: [...artPiece.comments, newComment] }
+        ? {
+            ...artPiece,
+            comments: artPiece?.comments
+              ? [...artPiece.comments, newComment]
+              : [newComment],
+          }
         : piece
     );
     if (!artPiece) {
@@ -52,7 +58,7 @@ export default function App({ Component, pageProps }) {
       setArtPiecesInfo([...updatedWithNewComment]);
     }
   };
-  console.log(artPiecesInfo);
+
   return (
     <>
       <GlobalStyle />

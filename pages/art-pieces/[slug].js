@@ -12,7 +12,7 @@ export default function ArtPieceDetails({
   const router = useRouter();
   const dynamicSlug = router.query.slug;
   const currentPiece = pieces.find((piece) => piece.slug === dynamicSlug);
-  console.log(artPiecesInfo);
+
   if (!currentPiece) return null;
 
   return (
