@@ -43,15 +43,22 @@ export default function App({ Component, pageProps }) {
         ? {
             ...artPiece,
             comments: artPiece?.comments
-              ? [...artPiece.comments, newComment]
-              : [newComment],
+              ? [
+                  ...artPiece.comments,
+                  { comment: newComment, date: currentDate },
+                ]
+              : [{ comment: newComment }],
           }
         : piece
     );
     if (!artPiece) {
       setArtPiecesInfo([
         ...artPiecesInfo,
-        { id: id, isFavorite: false, comments: [newComment] },
+        {
+          id: id,
+          isFavorite: false,
+          comments: [{ comment: newComment, date: currentDate }],
+        },
       ]);
     } else {
       setArtPiecesInfo([...updatedWithNewComment]);
