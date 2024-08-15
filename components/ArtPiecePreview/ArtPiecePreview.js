@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import FavoriteButton from "../FavoriteButoon/FavoriteButton";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function ArtPiecePreview({ piece, handleToggleFavorite }) {
   return (
