@@ -5,6 +5,51 @@ import { uid } from "uid";
 import Comments from "@/components/Comments/Comments";
 import styled from "styled-components";
 
+// const StyledButton = styled.button`
+//   background: none;
+//   border: none;
+//   text-decoration: underline;
+// `;
+
+const FlexWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledTitle = styled.h2`
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+`;
+
+const StyledAuthor = styled.h3`
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 1rem;
+`;
+
+const StyledInfo = styled.p`
+  margin: 0;
+  padding: 0;
+  margin-top: 1rem;
+  font-weight: bold;
+`;
+
+const StyledImage = styled(Image)`
+  max-height: 45vh;
+  object-fit: contain;
+  width: 70vw;
+`;
+
+const FlexWrapColor = styled(FlexWrap)`
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1rem;
+`;
+
 export default function ArtPieceDetails({
   pieces,
   artPiecesInfo,
@@ -17,23 +62,28 @@ export default function ArtPieceDetails({
   if (!currentPiece) return null;
 
   return (
-    <div>
-      <button onClick={() => router.push("/")}>⬅️Back to Overview</button>
-      <h1>{currentPiece.name}</h1>
-      <h2>by {currentPiece.artist}</h2>
-      <ul>
-        <li>Year: {currentPiece.year}</li>
-        <li>Genre: {currentPiece.genre}</li>
-      </ul>
-      <Image
+    <FlexWrap>
+      {/* <StyledButton onClick={() => router.push("/")}>
+        &#8592;Back to Overview
+      </StyledButton> */}
+      <StyledTitle>{currentPiece.name}</StyledTitle>
+      <StyledAuthor>by {currentPiece.artist}</StyledAuthor>
+      <StyledImage
         src={currentPiece.imageSource}
         alt={currentPiece.name}
         width={currentPiece.dimensions.width * 0.3}
         height={currentPiece.dimensions.height * 0.3}
       />
-      {currentPiece.colors.map((color) => {
-        return <Color key={uid()} color={color} />;
-      })}
+      <FlexWrapColor>
+        {currentPiece.colors.map((color) => {
+          return <Color key={uid()} color={color} />;
+        })}
+      </FlexWrapColor>
+      <StyledInfo>Further Information:</StyledInfo>
+      <ul>
+        <li>Year: {currentPiece.year}</li>
+        <li>Genre: {currentPiece.genre}</li>
+      </ul>
       <Comments artPiecesInfo={artPiecesInfo} currentPiece={currentPiece} />
       <CommentSection
         pieces={pieces}
@@ -42,7 +92,7 @@ export default function ArtPieceDetails({
           handleAddComment(newComment, currentDate, currentPiece.slug);
         }}
       />
-    </div>
+    </FlexWrap>
   );
 }
 
