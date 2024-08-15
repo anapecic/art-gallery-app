@@ -5,12 +5,6 @@ import { uid } from "uid";
 import Comments from "@/components/Comments/Comments";
 import styled from "styled-components";
 
-// const StyledButton = styled.button`
-//   background: none;
-//   border: none;
-//   text-decoration: underline;
-// `;
-
 const FlexWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -63,9 +57,6 @@ export default function ArtPieceDetails({
 
   return (
     <FlexWrap>
-      {/* <StyledButton onClick={() => router.push("/")}>
-        &#8592;Back to Overview
-      </StyledButton> */}
       <StyledTitle>{currentPiece.name}</StyledTitle>
       <StyledAuthor>by {currentPiece.artist}</StyledAuthor>
       <StyledImage

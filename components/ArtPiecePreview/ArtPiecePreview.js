@@ -27,13 +27,18 @@ const StyledWrapper = styled.div`
   position: relative;
 `;
 
+const StyledMargins = styled.div`
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+`;
+
 export default function ArtPiecePreview({
   piece,
   handleToggleFavorite,
   artPiecesInfo,
 }) {
   return (
-    <ul>
+    <StyledMargins>
       <StyledArtPiece>
         <StyledWrapper>
           <FavoriteButton
@@ -54,6 +59,6 @@ export default function ArtPiecePreview({
           {piece.name} by {piece.artist}
         </StyledInfo>
       </StyledArtPiece>
-    </ul>
+    </StyledMargins>
   );
 }

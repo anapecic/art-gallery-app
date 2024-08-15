@@ -21,7 +21,6 @@ export default function Comments({ artPiecesInfo, currentPiece }) {
     (piece) => currentPiece.slug === piece.id
   );
   const comments = currentArt?.comments;
-  console.log(comments);
   return (
     <>
       <hr />
