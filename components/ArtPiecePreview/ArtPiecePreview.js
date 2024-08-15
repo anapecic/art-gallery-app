@@ -1,27 +1,59 @@
 import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import styled from "styled-components";
 
-export default function ArtPiecePreview({ piece, handleToggleFavorite }) {
+const StyledArtPiece = styled.li`
+  list-style: none;
+`;
+
+const StyledInfo = styled.h2`
+  background-color: #0f5855;
+  color: white;
+  width: 50vw;
+  margin: 0;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+`;
+
+const StyledImage = styled(Image)`
+  max-height: 45vh;
+  object-fit: cover;
+  width: 50vw;
+`;
+
+const StyledWrapper = styled.div`
+  position: relative;
+`;
+
+export default function ArtPiecePreview({
+  piece,
+  handleToggleFavorite,
+  artPiecesInfo,
+}) {
   return (
     <ul>
-      <li>
-        <FavoriteButton
-          piece={piece}
-          handleToggleFavorite={handleToggleFavorite}
-        />
-        <Link href={`/art-pieces/${piece.slug}`}>
-          <Image
-            src={piece.imageSource}
-            alt={piece.name}
-            width={piece.dimensions.width * 0.25}
-            height={piece.dimensions.height * 0.25}
+      <StyledArtPiece>
+        <StyledWrapper>
+          <FavoriteButton
+            piece={piece}
+            handleToggleFavorite={handleToggleFavorite}
+            artPiecesInfo={artPiecesInfo}
           />
-        </Link>
-        <h2>
+          <Link href={`/art-pieces/${piece.slug}`}>
+            <StyledImage
+              src={piece.imageSource}
+              alt={piece.name}
+              width={piece.dimensions.width}
+              height={piece.dimensions.height}
+            />
+          </Link>
+        </StyledWrapper>
+        <StyledInfo>
           {piece.name} by {piece.artist}
-        </h2>
-      </li>
+        </StyledInfo>
+      </StyledArtPiece>
     </ul>
   );
 }

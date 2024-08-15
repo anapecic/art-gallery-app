@@ -3,6 +3,7 @@ import Image from "next/image";
 import CommentSection from "@/components/CommentSection/CommentSection.js";
 import { uid } from "uid";
 import Comments from "@/components/Comments/Comments";
+import styled from "styled-components";
 
 export default function ArtPieceDetails({
   pieces,
