@@ -30,6 +30,9 @@ export default function ArtPieceDetails({
         width={currentPiece.dimensions.width * 0.3}
         height={currentPiece.dimensions.height * 0.3}
       />
+      {currentPiece.colors.map((color) => {
+        return <Color key={uid()} color={color} />;
+      })}
       <Comments artPiecesInfo={artPiecesInfo} currentPiece={currentPiece} />
       <CommentSection
         pieces={pieces}
@@ -39,5 +42,18 @@ export default function ArtPieceDetails({
         }}
       />
     </div>
+  );
+}
+
+function Color({ color }) {
+  return (
+    <div
+      style={{
+        background: color,
+        borderRadius: "50%",
+        width: "50px",
+        height: "50px",
+      }}
+    ></div>
   );
 }
