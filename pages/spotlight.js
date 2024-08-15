@@ -1,4 +1,27 @@
 import Image from "next/image";
+import styled from "styled-components";
+
+const StyledImage = styled(Image)`
+  max-height: 50vh;
+  object-fit: cover;
+  width: 95vw;
+`;
+
+const FlexWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledInfo = styled.h2`
+  background-color: #0f5855;
+  color: white;
+  width: 95vw;
+  margin: 0;
+  padding: 0.8rem;
+  text-align: center;
+  font-size: 1.3rem;
+`;
 
 function randomSpotLight(pieces) {
   if (!pieces) return null;
@@ -11,15 +34,14 @@ export default function Spotlight({ pieces }) {
   if (!randomPiece) return null;
 
   return (
-    <div>
-      <h1>Spotlight</h1>
-      <Image
+    <FlexWrap>
+      <StyledImage
         src={randomPiece.imageSource}
         alt={randomPiece.name}
-        width={randomPiece.dimensions.width * 0.3}
-        height={randomPiece.dimensions.height * 0.3}
+        width={randomPiece.dimensions.width}
+        height={randomPiece.dimensions.height}
       />
-      <h2>By {randomPiece.artist}</h2>
-    </div>
+      <StyledInfo>{randomPiece.artist}</StyledInfo>
+    </FlexWrap>
   );
 }

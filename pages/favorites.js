@@ -1,4 +1,11 @@
 import ArtPiecePreview from "@/components/ArtPiecePreview/ArtPiecePreview";
+import styled from "styled-components";
+
+const FlexWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default function Favorites({
   pieces,
@@ -18,16 +25,15 @@ export default function Favorites({
   );
 
   return (
-    <div>
+    <FlexWrap>
       {favoritedArtPiecesData.map((piece) => (
         <ArtPiecePreview
           key={piece.slug}
           piece={piece}
           handleToggleFavorite={handleToggleFavorite}
+          artPiecesInfo={artPiecesInfo}
         />
       ))}
-    </div>
+    </FlexWrap>
   );
 }
-
-// beim styling beachten: favorite button im active zustand stylen
