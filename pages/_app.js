@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }) {
       );
     }
   }
-
+  //here
   const handleAddComment = (newComment, currentDate, id) => {
     const artPiece = artPiecesInfo.find((piece) => piece.id === id);
     const updatedWithNewComment = artPiecesInfo.map((piece) =>
