@@ -10,6 +10,8 @@ export default function App({ Component, pageProps }) {
   const { data: pieces, error, isLoading } = useSWR(url, fetcher);
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
+  console.log(artPiecesInfo);
+
   if (error) return <div>Failed to Load.</div>;
   if (isLoading) return <div>loading...</div>;
 

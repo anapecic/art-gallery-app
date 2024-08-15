@@ -13,6 +13,7 @@ export default function Navigation() {
     <StyledNavBar>
       <Link href="/spotlight">Spotlight</Link>
       <Link href="/art-pieces">Pieces</Link>
+      <Link href="/favorites">Favorites</Link>
     </StyledNavBar>
   );
 }
