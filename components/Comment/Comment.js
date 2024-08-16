@@ -8,7 +8,7 @@ export default function Comment({ comment }) {
       <p
         style={{
           fontWeight: "bold",
-          fontSize: "11px",
+          fontSize: "10.5px",
           color: "#0f5855",
         }}
       >
